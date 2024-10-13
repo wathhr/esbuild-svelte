@@ -1,7 +1,6 @@
 import { TraceMap, originalPositionFor } from '@jridgewell/trace-mapping';
-import type { CompileError } from 'svelte/compiler';
-import type { Warning } from 'svelte/compiler';
-import type { PartialMessage } from 'npm:esbuild@latest';
+import type { CompileError, Warning } from 'svelte/compiler';
+import type { PartialMessage } from 'esbuild';
 
 export function errorToLocation(error: CompileError | Warning, sourcemap?: string): PartialMessage['location'] {
   if (!error.filename || !error.start) return null;

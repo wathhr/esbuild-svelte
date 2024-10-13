@@ -28,10 +28,18 @@ Deno.test('counter .svelte import', async () => {
 });
 
 Deno.test('.ts import', async () => {
-  const result = await build(join(import.meta.dirname!, './svelte/Countdown.svelte'));
+  const result = await build(join(import.meta.dirname!, './svelte/Troll.svelte'));
   const text = new TextDecoder().decode(result.outputFiles[0]!.contents);
 
   assert(text.includes('console.log('));
+  assert(text.includes('</h1>'));
+});
+
+Deno.test('.svelte.ts import', async () => {
+  const result = await build(join(import.meta.dirname!, './svelte/Countdown.svelte'));
+  const text = new TextDecoder().decode(result.outputFiles[0]!.contents);
+
+  assert(text.includes('setInterval('));
   assert(text.includes('</h1>'));
 });
 

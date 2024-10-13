@@ -1,6 +1,6 @@
 {
   "name": "@wathhr/esbuild-svelte",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "exports": {
     ".": "./src/mod.ts"
   },
@@ -13,6 +13,7 @@
     "@jridgewell/trace-mapping": "npm:@jridgewell/trace-mapping@^0.3.25",
     "@std/assert": "jsr:@std/assert@^1.0.6",
     "@types/node": "npm:@types/node@^22.7.5",
+    "esbuild": "npm:esbuild@^0.24.0",
     "svelte": "npm:svelte@next"
   },
   "lint": {

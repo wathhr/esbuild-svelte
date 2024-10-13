@@ -1,7 +1,5 @@
 <script lang="ts">
-  import { test } from './countdown';
-
-  test();
+  import { countdown } from './countdown.svelte';
 </script>
 
-<h1>test</h1>
+<h1>{countdown}</h1>
