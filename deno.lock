@@ -8,8 +8,7 @@
     "npm:@types/node@^22.7.5": "22.7.5",
     "npm:esbuild@0.24": "0.24.0",
     "npm:magic-string@latest": "0.30.12",
-    "npm:magic-string@~0.30.12": "0.30.12",
-    "npm:svelte@next": "5.0.0-next.264_acorn@8.12.1"
+    "npm:svelte@^5.0.3": "5.0.3_acorn@8.13.0"
   },
   "jsr": {
     "@std/assert@1.0.6": {
@@ -141,14 +140,14 @@
         "undici-types"
       ]
     },
-    "acorn-typescript@1.4.13_acorn@8.12.1": {
+    "acorn-typescript@1.4.13_acorn@8.13.0": {
       "integrity": "sha512-xsc9Xv0xlVfwp2o7sQ+GCQ1PgbkdcpWdTzrwXxO3xDMTAywVS3oXVOcOHuRjAPkS4P9b+yc/qNF15460v+jp4Q==",
       "dependencies": [
         "acorn"
       ]
     },
-    "acorn@8.12.1": {
-      "integrity": "sha512-tcpGyI9zbizT9JbV6oYE477V6mTlXvvi0T0G3SNIYE2apm/G5huBa1+K89VGeovbg+jycCrfhl3ADxErOuO6Jg=="
+    "acorn@8.13.0": {
+      "integrity": "sha512-8zSiw54Oxrdym50NlZ9sUusyO1Z1ZchgRLWRaK6c86XJFClyCgFKetdowBg5bKxyp/u+CDBJG4Mpp0m3HLZl9w=="
     },
     "aria-query@5.3.2": {
       "integrity": "sha512-COROpnaoap1E2F000S62r6A60uHZnmlvomhfyT2DlTcrY1OrBKn2UhH7qn5wTC9zMvD0AY7csdPSNwKP+7WiQw=="
@@ -210,8 +209,8 @@
         "@jridgewell/sourcemap-codec"
       ]
     },
-    "svelte@5.0.0-next.264_acorn@8.12.1": {
-      "integrity": "sha512-vmlzMGxYTdIPhVl1vQhbcqHmSztG/sXzi+TooHiv57FgAVSBc/66cpvqtT5Wfxg9gQOEKOXl9tUV9OzBrBBwiw==",
+    "svelte@5.0.3_acorn@8.13.0": {
+      "integrity": "sha512-i8DopbAPRP9iaR3qqe++LPv4povQRshSseH3kSrzI4URZ9/7OTt3vCJPBp+5ACRQDik0S/tM1ZRA6EW/sGcKfw==",
       "dependencies": [
         "@ampproject/remapping",
         "@jridgewell/sourcemap-codec",
@@ -247,7 +246,7 @@
       "npm:@jridgewell/trace-mapping@~0.3.25",
       "npm:@types/node@^22.7.5",
       "npm:esbuild@0.24",
-      "npm:svelte@next"
+      "npm:svelte@^5.0.3"
     ]
   }
 }

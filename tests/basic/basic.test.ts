@@ -2,18 +2,20 @@ import process from 'node:process';
 import { join, relative } from 'node:path';
 import { assert, assertObjectMatch } from '@std/assert';
 import type * as esbuild from 'https://deno.land/x/esbuild@v0.24.0/mod.js';
-import { build } from '&/mod.ts';
+import { build } from '../mod.ts';
+
+const decoder = new TextDecoder();
 
 Deno.test('counter', async () => {
   const result = await build(join(import.meta.dirname!, './svelte/Counter.svelte'));
-  const text = new TextDecoder().decode(result.outputFiles[0]!.contents);
+  const text = decoder.decode(result.outputFiles[0]!.contents);
 
   assert(text.includes('</button>'));
 });
 
 Deno.test('counter .ts import', async () => {
   const result = await build(join(import.meta.dirname!, './svelte/counter.ts'));
-  const text = new TextDecoder().decode(result.outputFiles[0]!.contents);
+  const text = decoder.decode(result.outputFiles[0]!.contents);
 
   assert(text.includes('</button>'));
   assert(/console\.log\((['"])Component: \1,\s*[_\w]+\)/.test(text));
@@ -21,7 +23,7 @@ Deno.test('counter .ts import', async () => {
 
 Deno.test('counter .svelte import', async () => {
   const result = await build(join(import.meta.dirname!, './svelte/Wrapper.svelte'));
-  const text = new TextDecoder().decode(result.outputFiles[0]!.contents);
+  const text = decoder.decode(result.outputFiles[0]!.contents);
 
   assert(text.includes('</button>'));
   assert(text.includes('Not mounted'));
@@ -29,7 +31,7 @@ Deno.test('counter .svelte import', async () => {
 
 Deno.test('.ts import', async () => {
   const result = await build(join(import.meta.dirname!, './svelte/Troll.svelte'));
-  const text = new TextDecoder().decode(result.outputFiles[0]!.contents);
+  const text = decoder.decode(result.outputFiles[0]!.contents);
 
   assert(text.includes('console.log('));
   assert(text.includes('</h1>'));
@@ -37,7 +39,7 @@ Deno.test('.ts import', async () => {
 
 Deno.test('.svelte.ts import', async () => {
   const result = await build(join(import.meta.dirname!, './svelte/Countdown.svelte'));
-  const text = new TextDecoder().decode(result.outputFiles[0]!.contents);
+  const text = decoder.decode(result.outputFiles[0]!.contents);
 
   assert(text.includes('setInterval('));
   assert(text.includes('</h1>'));
@@ -65,4 +67,13 @@ Deno.test('invalid', async () => {
       lineText: '<h1>{a</h1>',
     });
   }
+});
+
+Deno.test('html output', async () => {
+  const result = await build(join(import.meta.dirname!, './svelte/Countdown.svelte'), { outputHtml: true });
+  const text = decoder.decode(result.outputFiles[0]!.contents);
+
+  assert(text.includes('<html>'));
+  assert(text.includes('mount('));
+  assert(text.includes('setInterval('));
 });

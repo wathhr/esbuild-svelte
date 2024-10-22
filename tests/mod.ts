@@ -1,12 +1,12 @@
 import * as esbuild from 'https://deno.land/x/esbuild@v0.24.0/mod.js'; // the npm version of esbuild causes problems on deno
 import * as s from 'svelte/compiler';
-import { sveltePlugin } from '#/mod.ts';
+import { sveltePlugin, type Props } from '#/mod.ts';
 
-export async function build(path: string, opts: s.CompileOptions = {}, inspect = false) {
+export async function build(path: string, opts: Partial<Props> = {}, inspect = false) {
   const result = await esbuild.build({
     entryPoints: [path],
     bundle: true,
-    plugins: [sveltePlugin({ ...s, compilerOptions: opts })],
+    plugins: [sveltePlugin({ ...s, ...opts })],
     external: ['svelte'], // for speed
     logLevel: 'silent',
     write: false,
